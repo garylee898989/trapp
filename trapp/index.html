@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>運動AI助手 - 首頁</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & Base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b);
+      font-family: 'Poppins', sans-serif;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-weight: 600;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #a6cee3;
+      text-shadow: 0 0 8px #41b883;
+    }
+    .btn-container {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 400px;
+    }
+    a.button {
+      flex: 1 1 160px;
+      background: linear-gradient(135deg, #41b883, #2c9f67);
+      color: #fff;
+      text-decoration: none;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(65, 184, 131, 0.6);
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    a.button:hover {
+      background: linear-gradient(135deg, #2c9f67, #41b883);
+      box-shadow: 0 6px 20px rgba(65, 184, 131, 0.9);
+      transform: translateY(-4px);
+    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+      a.button {
+        font-size: 1rem;
+        padding: 1rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>運動AI助手</h1>
+  <div class="btn-container">
+    <a href="plan.html" class="button">規劃你的週期化訓練內容</a>
+    <a href="analyze.html" class="button">輸入體測數據以分析</a>
+  </div>
+</body>
+</html>
