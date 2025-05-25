@@ -215,56 +215,50 @@
     };
 
     const prompt = `
-你是一位專業的運動訓練教練。
-請針對以下用戶資料，詳細規劃一套週期化訓練計畫。
-要求分項說明每個輸入資訊如何影響訓練安排，並提出具體建議。
+你是一位專業的運動訓練師，請根據以下使用者資料提供一份完整的訓練分析與建議：
 
-用戶資料：
-姓名：${data.name}
-年齡：${data.age}
-性別：${data.gender}
-訓練目標：${data.goal}
-每週訓練頻率：${data.frequency} 次
-訓練經驗：${data.experience}
-可用器材：${data.equipment}
-受限條件或傷痛：${data.limitations}
-期望週期長度：${data.period}
-其他備註：${data.notes}
+基本資料：
+- 身高：${data.height} cm
+- 體重：${data.weight} kg
+- 體脂：${data.bodyFat} %
+- 深蹲最大重量：${data.squatPR} kg
+- 臥推最大重量：${data.benchPR} kg
+- 60公尺衝刺：${data.sprint60} 秒
+- 立定跳遠：${data.jump} cm
 
-請產出包含：
-- 熱身建議
-- 主要訓練內容（包含週期性變化）
-- 恢復與休息
-- 注意事項
-
-請用條列式，中文繁體書寫。
+請分析此使用者的肌力與爆發力狀況，指出他的優勢與待加強項目，並給予實際的訓練建議（包含訓練頻率、重點肌群、適合的訓練類型與範例），以提升他的綜合運動能力。
 `;
 
-try {
-  const response = await fetch("https://api-inference.huggingface.co/models/google/flan-t5-base", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer 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"
-    },
-    body: JSON.stringify({ inputs: prompt })
-  });
+const response = await fetch("https://api.openai.com/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_API_KEY",  // 用你自己的金鑰
+  },
+  body: JSON.stringify({
+    model: "gpt-3.5-turbo",  // 建議先用這個測試穩定性
+    messages: [
+      {
+        role: "user",
+        content: prompt,
+      },
+    ],
+  }),
+});
 
-  const dataJson = await response.json();
-  console.log("AI 回傳：", dataJson); // 確認回傳格式
+const dataJson = await response.json();
 
-  // 修正這裡的條件
-  if (dataJson.error) {
-    resultDiv.textContent = `AI 分析錯誤：${dataJson.error}`;
-  } else if (Array.isArray(dataJson) && dataJson[0]?.generated_text) {
-    resultDiv.textContent = dataJson[0].generated_text.trim();
-  } else {
-    resultDiv.textContent = "無法產生建議，請檢查輸入資料是否完整，或稍後再試。";
-    console.error("AI 回應格式錯誤", dataJson);
-  }
-} catch (error) {
-  console.error("Fetch 錯誤:", error);
-  resultDiv.textContent = "無法連接 AI 服務，請稍後再試。";
+if (dataJson.error) {
+  resultDiv.textContent = `AI 分析錯誤：${dataJson.error.message}`;
+} else if (dataJson.choices && dataJson.choices.length > 0) {
+  const aiText = dataJson.choices[0].message.content.trim();
+  resultDiv.textContent = aiText;
+} else {
+  resultDiv.textContent = "無法產生訓練建議，請檢查輸入資料是否完整，或稍後再試。";
+  console.error("AI 回應錯誤", dataJson);
 }
+
   });
 </script>
+</body>
+</html>

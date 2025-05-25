@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>棒球</title>
+  <style>
+    /* 導覽列樣式 */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #f4f4f4;
+      padding: 15px;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .nav-btn {
+      background-color: #3498db;
+      color: white;
+      font-size: 16px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background-color: #2980b9;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f1f8e9;
+      padding: 40px;
+      color: #33691e;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1b5e20;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ 導覽按鈕放在 body 開頭 -->
+  <nav class="nav-bar">
+    <button class="nav-btn" onclick="goToPlan()">📋 運用AI制定你的棒球訓練計畫吧!</button>
+    <button class="nav-btn" onclick="goToProfile()">👤 給我一些資料 讓我幫你進行體能分析吧!</button>
+  </nav>
+
+  <h1>關於棒球專項的訓練...</h1>
+  <p>棒球是一項很講求全面運動能力的運動，棒球選手的訓練並不是只針對某些特定動作，而是涵蓋技術、體能等面向。以下簡單介紹這些訓練，以及這些訓練如何直接或間接影響棒球選手的專項運動表現。</p>
+  
+  <h2>1.棒球專項技術</h2>
+  <p>這是棒球運動員花最多時間訓練的部分 也是決定比賽成績最重要的一環 相當於運動表現的重要根基。</p>
+  <p>投球技巧：協調性、投球機制、控球、球速與變化球訓練。</p>
+  <p>打擊技巧：揮棒機制、擊球節奏與戰術執行。</p>
+  <p>守備技巧：接傳球、內外野移動腳步、雙殺配合等。</p>
+  <p>跑壘技巧：起跑姿勢、場面判斷、滑壘撲壘。</p>
+
+  <h2>2.體能訓練</h2>
+  <p>體能訓練是決定運動表現上限的關鍵 能提升球速、揮棒速度與力量 也是普通選手與頂尖選手的差距所在。</p>
+  <p>爆發力：短距離衝刺、打擊與投球。</p>
+  <p>肌力：力量輸出的基底。</p>
+  <p>活動度與柔軟度：增加身體活動的範圍 減少受傷機率。</p>
+  <p>敏捷與協調：全身性動作的連貫。</p>
+
+  <a href="index.html">← 回首頁</a>
+
+  <script>
+  function goToPlan() {
+    window.location.href = "plan.html"; // 修改為實際頁面路徑
+  }
+
+  function goToProfile() {
+    window.location.href = "analyze.html"; // 修改為實際頁面路徑
+  }
+  </script>
+</body>
+</html>
